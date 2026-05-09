@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class Citation(BaseModel):
@@ -26,6 +26,12 @@ class IncidentInput(BaseModel):
     observed_symptoms: list[str] = Field(default_factory=list)
     recent_changes: list[str] = Field(default_factory=list)
     raw_logs: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def validate_time_window(self) -> "IncidentInput":
+        if self.time_window_end < self.time_window_start:
+            raise ValueError("time_window_end must be greater than or equal to time_window_start")
+        return self
 
 
 class LogChunk(BaseModel):

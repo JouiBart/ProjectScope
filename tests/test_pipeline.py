@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from projectscope.pipeline import run_placeholder_pipeline
 from projectscope.schemas import IncidentInput
 
@@ -15,9 +17,8 @@ def test_run_placeholder_pipeline_returns_expected_shape() -> None:
         raw_logs=["line"],
     )
 
-    output = run_placeholder_pipeline(
-        incident, "/home/runner/work/ProjectScope/ProjectScope/architecture.yaml"
-    )
+    repo_root = Path(__file__).resolve().parents[1]
+    output = run_placeholder_pipeline(incident, repo_root / "architecture.yaml")
 
     assert output["incident_id"] == "INC-TEST-1"
     assert output["status"] == "needs_review"
