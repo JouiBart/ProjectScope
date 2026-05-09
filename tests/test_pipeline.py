@@ -1,0 +1,25 @@
+from projectscope.pipeline import run_placeholder_pipeline
+from projectscope.schemas import IncidentInput
+
+
+def test_run_placeholder_pipeline_returns_expected_shape() -> None:
+    incident = IncidentInput(
+        incident_id="INC-TEST-1",
+        affected_systems=["order-gateway"],
+        error_codes=["HTTP_503"],
+        severity="high",
+        time_window_start="2026-05-08T10:00:00Z",
+        time_window_end="2026-05-08T10:30:00Z",
+        observed_symptoms=["spike"],
+        recent_changes=["deploy"],
+        raw_logs=["line"],
+    )
+
+    output = run_placeholder_pipeline(
+        incident, "/home/runner/work/ProjectScope/ProjectScope/architecture.yaml"
+    )
+
+    assert output["incident_id"] == "INC-TEST-1"
+    assert output["status"] == "needs_review"
+    assert output["hypotheses"]
+    assert output["hypotheses"][0]["citations"][0]["source_id"] == "architecture.yaml"

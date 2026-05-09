@@ -1,0 +1,19 @@
+systems:
+  - id: order-gateway
+    name: Order Gateway
+    dependencies: [auth-service, routing-engine]
+  - id: auth-service
+    name: Authentication Service
+    dependencies: [identity-store]
+  - id: routing-engine
+    name: Routing Engine
+    dependencies: [pricing-service, carrier-adapter]
+  - id: pricing-service
+    name: Pricing Service
+    dependencies: [rate-cache]
+  - id: carrier-adapter
+    name: Carrier Adapter
+    dependencies: [rate-cache]
+  - id: rate-cache
+    name: Rate Cache
+    dependencies: []

@@ -6,6 +6,26 @@ The first milestone is incident diagnostics (described in detail below). Later m
 
 > ⚠️ **Status:** Learning project, work in progress. Not production-ready. The goal is to deeply understand how each layer of a real AI system works — local model serving, multi-tier model routing, metadata-aware RAG, eval-driven iteration — by building it end-to-end with measurable progress between phases.
 
+## Phase 0 quick start
+
+```bash
+uv sync
+cp .env.example .env
+make ingest
+make eval
+make run
+```
+
+For local model setup (Ollama):
+
+```bash
+ollama pull qwen2.5:7b
+# or
+ollama pull llama3.1:8b
+```
+
+For cloud setup, populate Azure OpenAI values in `.env` and keep secrets out of source control.
+
 -----
 
 ## Why this project exists
