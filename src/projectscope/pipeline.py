@@ -32,6 +32,10 @@ def run_placeholder_pipeline(incident: IncidentInput, architecture_path: str | P
     )
     return {
         "incident_id": incident.incident_id,
+        "project": incident.project,
+        "repository": incident.repository,
+        "customer": incident.customer,
+        "version": incident.version,
         "triage": triage.model_dump(),
         "hypotheses": [hypothesis.model_dump()],
         "status": "needs_review",

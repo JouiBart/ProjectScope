@@ -18,6 +18,10 @@ class Hypothesis(BaseModel):
 
 class IncidentInput(BaseModel):
     incident_id: str
+    project: str = Field(..., min_length=1)
+    repository: str = Field(..., min_length=1)
+    customer: str = Field(..., min_length=1)
+    version: str = Field(..., min_length=1)
     affected_systems: list[str] = Field(default_factory=list)
     error_codes: list[str] = Field(default_factory=list)
     severity: str

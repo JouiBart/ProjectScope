@@ -1,5 +1,9 @@
 {
   "incident_id": "INC-2026-0001",
+  "project": "ProjectScope",
+  "repository": "JouiBart/ProjectScope",
+  "customer": "Acme Logistics",
+  "version": "0.1.0",
   "affected_systems": ["order-gateway", "routing-engine"],
   "error_codes": ["HTTP_503", "ROUTE_TIMEOUT"],
   "severity": "high",
