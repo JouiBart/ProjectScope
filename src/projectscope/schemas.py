@@ -17,7 +17,7 @@ class Hypothesis(BaseModel):
 
 
 class IncidentInput(BaseModel):
-    incident_id: str
+    incident_id: str = Field(..., min_length=1)
     project: str = Field(..., min_length=1)
     repository: str = Field(..., min_length=1)
     customer: str = Field(..., min_length=1)
