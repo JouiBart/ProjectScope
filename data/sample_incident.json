@@ -1,0 +1,18 @@
+{
+  "incident_id": "INC-2026-0001",
+  "project": "ProjectScope",
+  "repository": "JouiBart/ProjectScope",
+  "customer": "Acme Logistics",
+  "version": "0.1.0",
+  "affected_systems": ["order-gateway", "routing-engine"],
+  "error_codes": ["HTTP_503", "ROUTE_TIMEOUT"],
+  "severity": "high",
+  "time_window_start": "2026-05-08T10:00:00Z",
+  "time_window_end": "2026-05-08T10:30:00Z",
+  "observed_symptoms": ["dispatch queue spike", "retries exceeded"],
+  "recent_changes": ["routing timeout lowered from 3s to 1s"],
+  "raw_logs": [
+    "2026-05-08T10:02:11Z order-gateway ERROR HTTP_503 upstream routing-engine",
+    "2026-05-08T10:02:12Z routing-engine ERROR ROUTE_TIMEOUT carrier-adapter"
+  ]
+}

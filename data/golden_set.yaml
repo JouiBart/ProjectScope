@@ -1,0 +1,33 @@
+incidents:
+  - incident_id: GOLD-001
+    summary: "Orders fail with HTTP 503 from order-gateway"
+    expected_diagnosis: "routing-engine timeout caused by carrier-adapter latency"
+    expected_citations:
+      - source_id: runbook-routing-timeouts
+        quote: "Increase route timeout when carrier adapter latency exceeds 900ms"
+      - source_id: incident-2026-01-14
+        quote: "503 spikes tracked to ROUTE_TIMEOUT under high carrier latency"
+  - incident_id: GOLD-002
+    summary: "Authentication failures after identity-store maintenance"
+    expected_diagnosis: "stale auth-service token cache after identity-store restart"
+    expected_citations:
+      - source_id: runbook-auth-cache
+        quote: "Flush token cache after identity-store failover"
+  - incident_id: GOLD-003
+    summary: "Pricing mismatch on expedited shipments"
+    expected_diagnosis: "rate-cache lagging behind pricing-service updates"
+    expected_citations:
+      - source_id: runbook-rate-cache
+        quote: "Invalidate cached rate keys after pricing release"
+  - incident_id: GOLD-004
+    summary: "Carrier label creation intermittently times out"
+    expected_diagnosis: "carrier-adapter retries exhausted due to upstream throttling"
+    expected_citations:
+      - source_id: incident-2026-03-02
+        quote: "Carrier API 429 burst caused adapter timeout chain"
+  - incident_id: GOLD-005
+    summary: "Order gateway latency spike during deployment"
+    expected_diagnosis: "routing-engine dependency graph recalculation saturation"
+    expected_citations:
+      - source_id: deploy-note-2026-04-11
+        quote: "Route graph warmup required after deployment"
