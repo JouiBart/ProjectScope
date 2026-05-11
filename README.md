@@ -55,7 +55,7 @@ Domain anchor: incident response in **logistics integration systems**, where eng
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Incident input (Pydantic schema): project, repository, customer, │
-│  version, affected systems, errors, severity, time window         │
+│  version, affected systems, error_codes, severity, time window     │
 └────────────────────────┬────────────────────────────────────────┘
                          │
             ┌────────────▼────────────┐
